@@ -1,0 +1,22 @@
+<div class='modal hide fade' id='sign-in-modal'>
+  <div class='modal-header'>
+    <%= link_to t('common.x'), nil, class: 'close', id: 'close-sign-in-modal' %>
+    <%= t 'auth.sign_in' %>
+  </div>
+
+  <div class='modal-body'>
+    <%= simple_form_for :user, url: user_session_path, html: { id: 'new-user-session' } do |form| %>
+
+      <%= form.input :email %>
+      <%= form.input :password %>
+
+      <%= form.button :submit, t('auth.sign_in'), class: 'btn-success', data: { disable_with: t('common.please_wait') } %>
+    <% end %>
+    <%= link_to t('auth.forgot_password?'), new_user_password_path %>
+  </div>
+
+  <div class='modal-footer'>
+    <%= link_to t('common.cancel'), nil, class: 'btn btn-danger', id: 'cancel-sign-in-modal' %>
+  </div>
+</div>
+

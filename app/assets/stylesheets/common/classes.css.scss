@@ -1,0 +1,15 @@
+a.disabled {
+    pointer-events: none;
+    cursor: default;
+
+    color: $grayLight;
+}
+
+span.error, small.error {
+    color: $errorText;
+    margin-left: 10px;
+}
+
+.hidden {
+    display: none;
+}

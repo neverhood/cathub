@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cathub</title>
+  <%= stylesheet_link_tag    "admin", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "admin", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+
+<body id='admin-<%= controller_name.dasherize %>' data-action='<%= action_name.dasherize %>'>
+
+  <div id='wrapper'>
+    <%= render 'admin/header'  %>
+    <%= render 'notifications' %>
+
+    <div class='container' id='content'>
+      <%= yield %>
+
+      <div id='loader' class='hidden'> <%= image_tag 'loader.gif' %> </div>
+      <div id='backdrop' class='modal-backdrop hidden'> </div>
+
+      <div id='push'></div>
+    </div>
+  </div>
+
+  <%= render 'footer' %>
+
+</body>
+
+</html>

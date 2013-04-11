@@ -1,0 +1,16 @@
+$.api.header =
+    init: ->
+        signInModal = $('div#sign-in-modal')
+
+        $('a#sign-in').bind 'click', (event) ->
+            event.preventDefault()
+            event.stopPropagation()
+
+            signInModal.modal 'show'
+
+        $('a#close-sign-in-modal, a#cancel-sign-in-modal').bind 'click', (event) ->
+            event.preventDefault()
+            event.stopPropagation()
+
+            signInModal.modal 'hide'
+

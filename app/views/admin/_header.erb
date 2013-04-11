@@ -1,0 +1,16 @@
+<div class="navbar navbar-inverse" id='header'>
+
+  <div class="navbar-inner">
+    <%= link_to t('.brand'), admin_root_path, class: 'brand' %>
+
+    <ul class='nav'>
+      <li class='<%= current_page?(admin_root_path) ? 'active' : '' %>'> <%= link_to icon_label('icon-home', t('.root')), admin_root_path %> </li>
+      <li> <%= link_to icon_label('icon-desktop', t('.site')), root_path %> </li>
+    </ul>
+
+    <ul class='nav pull-right'>
+      <li><%= link_to icon_label('icon-signout', t('.sign_out')), destroy_admin_session_path, method: 'delete' %></li>
+    </ul>
+  </div>
+
+</div>

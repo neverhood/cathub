@@ -1,0 +1,49 @@
+ru:
+  application:
+    header:
+      root: 'Главная'
+      brand: 'Коты'
+    footer:
+      message: 'Коты'
+
+  common:
+    please_wait: 'Пожалуйста, подождите..'
+    are_you_sure?: 'Вы уверены?'
+    submit: 'Сохранить'
+    cancel: 'Отмена'
+    destroy: 'Удалить'
+    warning!: 'Внимание!'
+    heads_up!: 'Ок!'
+    x: '×'
+
+  auth:
+    sign_in: 'Вход'
+    sign_up: 'Регистрация'
+    sign_out: 'Выйти'
+    invalid_auth_params: 'Введены неправельные данные'
+    forgot_password?: 'Забыли пароль?'
+
+  activerecord:
+    models:
+    attributes:
+      user:
+        email: 'E-Mail'
+    errors:
+      models:
+
+  # --- Views ---
+  #
+  admin:
+    header:
+      sign_out: 'Выйти'
+      brand: 'Коты(Админ)'
+      root: 'Главная'
+      site: 'Основной сайт'
+
+  cats:
+    index:
+      header: 'Коты'
+  users:
+    registrations:
+      new:
+        header: 'Регистрация'
