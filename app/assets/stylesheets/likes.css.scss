@@ -1,0 +1,21 @@
+// Place all the styles related to the likes controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+body#posts, body#users {
+    div.like-bar {
+        display: none; /* will be shown with JS */
+        a {
+            @extend %undecorated;
+        }
+
+        i {
+            cursor: pointer;
+            color: $linkColor;
+        }
+
+        span.current-likes-count {
+            color: $linkColor;
+        }
+    }
+}

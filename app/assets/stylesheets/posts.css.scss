@@ -1,0 +1,74 @@
+// Place all the styles related to the posts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+body#posts {
+    div#new-post-form-container {
+        margin: 20px 0;
+        @extend .span8;
+
+        display: none;
+        float: none;
+
+        div#video-uploader-container {
+            display: none;
+        }
+
+        div#video-uploader-container, div#image-uploader-container {
+            margin: 15px 0;
+        }
+
+        div.form-inputs {
+            height: 150px;
+        }
+    }
+
+    form#new-post {
+        input[type="submit"] {
+            margin-top: 25px;
+        }
+
+        div#media-switch {
+            i {
+                cursor: pointer;
+                font-size: 25px;
+                margin-right: 10px;
+            }
+
+            i.active {
+                color: $linkColor;
+            }
+        }
+    }
+
+}
+
+body#posts, body#users {
+    div#posts, div#user-posts {
+        hr {
+            margin-bottom: 0;
+        }
+    }
+
+    div.post {
+        max-width: 560px;
+        padding: 10px 0;
+
+        img.gif-image, img.gif-animation, img.regular-image {
+            cursor: pointer;
+        }
+
+        div.gif-image-container {
+            display: inline-block;
+        }
+
+        div.gif-info-overlay {
+            @include opacity(70);
+            background: black;
+            color: white;
+            padding-left: 10px;
+
+            margin-top: -20px;
+        }
+    }
+}

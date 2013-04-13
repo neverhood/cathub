@@ -1,0 +1,52 @@
+<div id='post-<%= post.id %>' class='post'>
+  <%- if (user_signed_in? and current_user.owns?(post)) or admin_signed_in? %>
+    <%= link_to t('common.x'), post, method: 'delete', remote: true, class: 'close destroy-post', data: { confirm: t('common.are_you_sure?') } %>
+  <% end %>
+
+  <div class='post-description'>
+    <%= simple_format post.description %>
+  </div>
+
+  <% if post.media.video? %>
+    <iframe width="560" height="315" src="<%= post.media.url %>" frameborder="0" allowfullscreen></iframe>
+  <% else %>
+    <%- if post.media.gif? %>
+      <div class='gif-image-container'>
+        <%= image_tag post.media.image.url(:thumb), class: 'gif-image' %>
+        <div class='gif-info-overlay'> <%= t '.gif' %> </div>
+
+        <%= image_tag post.media.image.url(:large), class: 'hidden gif-animation' %>
+      </div>
+    <% else %>
+      <div class='regular-image-container'>
+        <%= image_tag post.media.image.url(:thumb), class: 'regular-image', data: { author: post.user.name, description: post.description } %>
+        <%= image_tag post.media.image.url(:large), class: 'hidden image-large-version' %>
+      </div>
+    <% end %>
+  <% end %>
+
+  <div class='post-details'>
+    <div class='post-author pull-left'>
+      <%= link_to post.user.name, user_path(post.user) %>,
+      <span class='time'> <%= distance_of_time_in_words_to_now post.created_at %> <%= t 'common.ago' %> </span>
+    </div>
+
+    <div class='like-bar-js-required'>
+      <%= t '.js_required' %>
+    </div>
+
+    <div class='like-bar pull-right'>
+      <%= link_to likes_path(id: post.id), method: 'post', remote: true, class: "like #{ current_user.liked?(post) ? 'hidden' : '' }" do %>
+        <%= icon_label 'icon-heart-empty like' %>
+      <% end %>
+
+      <%= link_to likes_path(id: post.id), method: 'delete', remote: true, class: "unlike #{ current_user.liked?(post) ? '' : 'hidden' }" do %>
+        <%= icon_label 'icon-heart unlike' %>
+      <% end %>
+
+      <span class='current-likes-count'> <%= post.likes_count %> </span>
+    </div>
+  </div>
+</div>
+
+<hr />

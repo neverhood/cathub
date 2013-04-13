@@ -14,6 +14,8 @@ ru:
     destroy: 'Удалить'
     warning!: 'Внимание!'
     heads_up!: 'Ок!'
+    ago: 'назад'
+    close: 'Закрыть'
     x: '×'
 
   auth:
@@ -28,6 +30,12 @@ ru:
     attributes:
       user:
         email: 'E-Mail'
+        name:  'Имя/Псевдоним'
+      media:
+        image: 'Изображение'
+        url:   'Ссылка на видео (youtube)'
+      post:
+        description: 'Краткое описание'
     errors:
       models:
 
@@ -43,7 +51,18 @@ ru:
   cats:
     index:
       header: 'Коты'
+  posts:
+    index:
+      header: 'Коты'
+      new: 'Добавить пост'
+      video_placeholder: 'http://www.youtube.com/watch?v=ZBAGEeOms-8'
+    post:
+      posted_by: 'Опубликовано пользователем:'
+      gif: 'GIF'
   users:
+    show:
+      posts_count: 'Постов:'
+      posts: 'Посты пользователя'
     registrations:
       new:
         header: 'Регистрация'

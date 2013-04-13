@@ -18,7 +18,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 
   gem 'bootstrap-sass'
-  gem 'font-awesome-sass-rails'
+  gem 'font-awesome-more-rails', git: 'git@github.com:neverhood/font-awesome-more-rails.git'
 end
 
 group :development, :test do
@@ -53,7 +53,7 @@ gem 'kaminari'
 
 # Image Processing
 gem 'carrierwave'
-gem 'mini_magick'
+gem 'rmagick'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 #gem 'jbuilder', '~> 1.0.1'

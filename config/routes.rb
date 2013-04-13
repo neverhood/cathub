@@ -1,9 +1,16 @@
 Cathub::Application.routes.draw do
   devise_for :users, controllers: { registrations: 'users/registrations',
-                                    passwords: 'users/passwords' }
+                                    passwords: 'users/passwords',
+                                    sessions: 'users/sessions' }
   devise_for :admins
 
-  root to: 'cats#index'
+  root to: 'posts#index'
+
+  resources :users, only:   [ :show ]
+  resources :posts, except: [ :edit, :new ]
+  resources :likes, only:   [ :create ] do
+    collection { delete :destroy }
+  end
 
   namespace :admin do
   end

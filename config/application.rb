@@ -23,5 +23,6 @@ module Cathub
 
     # PATCHES
     Dir["#{Rails.root}/lib/patches/**/**.rb"].each { |file| require file }
+    Dir["#{Rails.root}/lib/**/**.rb"].each { |file| require file }
   end
 end

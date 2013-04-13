@@ -22,6 +22,9 @@
 //
 //= require header
 //= require cats
+//= require posts
+//= require users
+//= require likes
 //
 
 $.ajaxSettings.dataType = 'json';

@@ -1,0 +1,19 @@
+<div id='user-page-header'>
+  <h2> <%= @user.name %> </h2>
+
+  <div id='details'>
+    <div id='posts-count'>
+      <strong><%= t '.posts_count' %></strong> <span class='label label-info'><%= @user.posts.count %></span>
+    </div>
+  </div>
+</div>
+
+<hr />
+
+<div id='user'>
+  <div id='posts'>
+    <h3> <%= t '.posts' %> </h3>
+    <%= render @user.posts %>
+  </div>
+</div>
+

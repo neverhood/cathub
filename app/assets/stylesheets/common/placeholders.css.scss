@@ -4,3 +4,11 @@
     left: 50%;
     top: 50%;
 }
+
+%undecorated {
+    text-decoration: none;
+
+    &:active {
+        text-decoration: none;
+    }
+}

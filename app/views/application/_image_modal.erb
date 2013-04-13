@@ -1,0 +1,18 @@
+<div class='modal hide fade' id='image-modal'>
+  <div class='modal-header'>
+    <button type="button" class="close" id='close-image-modal'><%= t 'common.x' %></button>
+    <div id='author-name'></div>
+  </div>
+
+  <div class="modal-body">
+    <div id='image-container'>
+    </div>
+
+    <div id='post-description'>
+    </div>
+  </div>
+
+  <div class="modal-footer">
+    <%= link_to t('common.close'), nil, id: 'close-image-modal' %>
+  </div>
+</div>
