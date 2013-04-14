@@ -6,6 +6,19 @@
       <li class='<%= current_section.image?? "active" : "" %>'> <%= link_to t('.image'), posts_path(section: 'image') %> </li>
     </ul>
   </div>
+
+  <div id='posts-sorting'>
+    <h3> <%= t '.sort_by' %> </h3>
+    <ul class='nav nav-pills'>
+      <%- unless current_section.all? %>
+        <li class='<%= current_sort.date?? "active" : "" %>'> <%= link_to t('.date_sort'), posts_path(sort: 'date', section: current_section) %> </li>
+        <li class='<%= current_sort.likes_count?? "active" : "" %>'> <%= link_to t('.likes_sort'), posts_path(sort: 'likes_count', section: current_section) %> </li>
+      <% else %>
+        <li class='<%= current_sort.date?? "active" : "" %>'> <%= link_to t('.date_sort'), posts_path(sort: 'date') %> </li>
+        <li class='<%= current_sort.likes_count?? "active" : "" %>'> <%= link_to t('.likes_sort'), posts_path(sort: 'likes_count') %> </li>
+      <% end %>
+    </ul>
+  </div>
 </div>
 
 <hr />

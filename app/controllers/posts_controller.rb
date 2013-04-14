@@ -2,9 +2,10 @@ class PostsController < ApplicationController
   before_filter :authenticate_user!, only: [ :update, :destroy, :create ]
   before_filter :find_post!, only: [ :update, :destroy ]
   before_filter :prepare_section, only: [ :index ]
+  before_filter :prepare_sort, only: [ :index ]
 
   def index
-    @posts = @section.page(params[:page]).includes(:user).includes(:media)
+    @posts = @section.order(@sort).page(params[:page]).includes(:user).includes(:media)
     @post  = Post.new.tap { |post| post.build_media }
 
     respond_to do |format|
@@ -51,5 +52,9 @@ class PostsController < ApplicationController
 
   def prepare_section
     @section = %w(video image).include?(params[:section]) ? Post.send(params[:section].to_sym) : Post.scoped
+  end
+
+  def prepare_sort
+    @sort = %w(likes_count).include?(params[:sort]) ? "posts.#{params[:sort]} DESC, posts.created_at DESC" : 'posts.created_at DESC'
   end
 end

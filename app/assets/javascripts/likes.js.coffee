@@ -8,7 +8,7 @@ $.api.likes =
         $('div#posts div.post div.like-bar').show()
         $('div#posts div.post div.like-bar-js-required').hide()
 
-        $('div#posts a.like, div#posts a.unlike').bind 'ajax:beforeSend', ->
+        $('div#posts').on('ajax:beforeSend', 'a.like, a.unlike', ->
             $this = $(this)
             container = $(this).parent()
             currentLikesDom = container.find('span.current-likes-count')
@@ -18,3 +18,5 @@ $.api.likes =
 
             newLikesCount = if $this.hasClass('like') then currentLikesCount + 1 else currentLikesCount - 1
             currentLikesDom.text newLikesCount
+        )
+        #$('div#posts a.like, div#posts a.unlike').bind 'ajax:beforeSend', ->

@@ -22,6 +22,9 @@ $.api.posts =
         currentSection = ->
             matches = window.location.search.match(/section=(.*)/)
             if matches? then matches[1] else null
+        currentSort = ->
+            matches = window.location.search.match(/sort=(.*)/)
+            if matches? then matches[1] else null
 
         lastPage = ->
             container().attr('data-last-page') == 'true'
@@ -32,6 +35,7 @@ $.api.posts =
         nextPageUrl = ->
             url = "/posts?page=#{currentPage() + 1}"
             if currentSection()? then url += "&section=#{ currentSection() }"
+            if currentSort()? then url += "&sort=#{ currentSort() }"
             url
 
         $('div#posts div.post img.gif-image, div#posts div.post img.gif-animation').click ->

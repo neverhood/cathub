@@ -66,6 +66,9 @@ ru:
       image: 'Изображения'
       video: 'Видео'
       all: 'Всё'
+      sort_by: 'Сортировать котов по:'
+      date_sort: 'Дате'
+      likes_sort: 'Популярности'
     post:
       posted_by: 'Опубликовано пользователем:'
       gif: 'GIF'
