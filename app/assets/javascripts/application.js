@@ -20,6 +20,8 @@
 //= require bootstrap-modal
 //= require bootstrap-transition
 //
+//= require cookie
+//
 //= require header
 //= require cats
 //= require posts

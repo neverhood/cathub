@@ -3,6 +3,8 @@ ru:
     header:
       root: 'Главная'
       brand: 'Коты'
+      dropdown_toggler: '<i class="icon-user"></i> %{name} <b class="caret"></b>'
+      me: 'Мой профиль'
     footer:
       message: 'Коты'
 
@@ -23,6 +25,7 @@ ru:
     sign_up: 'Регистрация'
     sign_out: 'Выйти'
     invalid_auth_params: 'Введены неправельные данные'
+    edit: 'Редактировать личную информацию'
     forgot_password?: 'Забыли пароль?'
     omniauth_failure: 'Произошла ошибка, пожалуйста, попробуйте позже'
     vk: 'Войти через Vkontakte'
@@ -55,6 +58,7 @@ ru:
     index:
       header: 'Коты'
   posts:
+    new: 'Добавить пост'
     index:
       header: 'Коты'
       new: 'Добавить пост'

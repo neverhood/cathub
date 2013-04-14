@@ -11,7 +11,9 @@
 <hr />
 
 <%- if user_signed_in? or admin_signed_in? %>
-  <%= link_to t('.new'), nil, id: 'new-post-form-toggler' %>
+  <%- if current_section.all? %>
+    <%= link_to t('.new'), nil, id: 'new-post-form-toggler' %>
+  <% end %>
 
   <div id='new-post-form-container' class='well'>
     <%= simple_form_for @post, html: { multipart: true, id: 'new-post' } do |form| %>
@@ -34,7 +36,6 @@
 
   </div>
 
-  <hr />
 <% end %>
 
 

@@ -14,3 +14,9 @@ $.api.header =
 
             signInModal.modal 'hide'
 
+        $('a#user-dropdown-toggler').bind 'click', (event) ->
+            event.stopPropagation()
+            event.preventDefault()
+
+            $('ul#user-dropdown-options').toggle()
+

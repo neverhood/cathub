@@ -17,6 +17,10 @@ $.api.posts =
 
             formContainer.slideToggle 'fast'
 
+        currentSection = ->
+            matches = window.location.search.match(/section=(.*)/)
+            if matches? then matches[1] else null
+
         $('div#posts div.post img.gif-image, div#posts div.post img.gif-animation').click ->
             $(this).parent().find('img.gif-image, img.gif-animation, div.gif-info-overlay').toggleClass 'hidden'
 
@@ -46,4 +50,15 @@ $.api.posts =
         $('div#posts a.destroy-post').bind 'ajax:beforeSend', ->
             $(this).parents('div.post').remove()
 
+        $('a#new-post').bind 'click', (event) ->
+            if currentSection()?
+                $.cookie 'show-new-post-form', 'true', expires: 7, path: '/'
+            else
+                event.stopPropagation()
+                event.preventDefault()
 
+                formContainer.slideDown 'fast'
+
+        if $.cookie('show-new-post-form')? and $.cookie('show-new-post-form') == 'true'
+            $.removeCookie 'show-new-post-form', path: '/'
+            formContainer.slideDown 'fast'
