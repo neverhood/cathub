@@ -13,6 +13,13 @@
 <% end %>
 
 <div>
+  <div><%= link_to t('auth.vk'), user_omniauth_authorize_path(:vkontakte) %></div>
+  <div><%= link_to t('auth.facebook'), user_omniauth_authorize_path(:facebook) %></div>
+</div>
+
+<hr />
+
+<div>
   <div><%= link_to t('auth.sign_up'), new_user_registration_path %></div>
   <div><%= link_to t('auth.forgot_password?'), new_user_password_path %></div>
 </div>
