@@ -12,6 +12,8 @@ class User < ActiveRecord::Base
   validates :name, presence: true
   validates :name, length: { within: 3..25 }, if: -> { name.present? }
 
+  before_save -> { self.set_own_password = true if encrypted_password_changed? }, unless: :set_own_password?
+
   def owns?(model)
     model.respond_to?(:user_id) and model.user_id == id
   end

@@ -7,7 +7,7 @@
   <%= csrf_meta_tags %>
 </head>
 
-<body id='<%= controller_name.dasherize %>' data-action='<%= action_name.dasherize %>'>
+<body id='<%= controller_path.dasherize.gsub('/', '-') %>' data-action='<%= action_name.dasherize %>'>
 
 <div id='wrapper'>
   <%= render 'header'        %>
