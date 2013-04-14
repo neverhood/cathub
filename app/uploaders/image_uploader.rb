@@ -40,8 +40,15 @@ class ImageUploader < CarrierWave::Uploader::Base
     end
   end
 
+  def watermark
+    manipulate! do |img|
+      logo = Magick::Image.read("#{Rails.root}/app/assets/images/watermarks/watermark.png").first
+      img = img.composite(logo, Magick::SouthEastGravity, Magick::OverCompositeOp)
+    end
+  end
+
   process resize_to_limit: [ 800, 600 ]
-  process :set_content_type
+  process :watermark
 
   version :large do
     process resize_to_limit: [ 800, 600 ]
