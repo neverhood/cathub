@@ -8,6 +8,8 @@
 
       <%- if user_signed_in? %>
         <li> <%= link_to icon_label('icon-plus', t('posts.new')), root_path, id: 'new-post' %> </li>
+      <% else %>
+        <li> <%= link_to icon_label('icon-plus', t('posts.new')), new_user_session_path, id: 'new-post-auth-required' %> </li>
       <% end %>
     </ul>
 

@@ -85,6 +85,7 @@ div#image-modal {
     top: 5%;
 
     div.modal-body {
+        text-align: center;
         width: 750px;
         margin: 0 auto;
         max-height: 700px;
@@ -100,19 +101,22 @@ div#wrapper {
     min-height: 100%;
     height: auto !important;
     height: 100%;
-    margin: 0 auto -100px;
+    margin: 0 auto -300px;
 }
 
 div#push, div#footer {
-    height: 100px;
+    height: 300px;
 }
 
 div#footer {
-    @include gradient-vertical($navbarInverseBackgroundHighlight, $navbarInverseBackground);
-
-    .container .message {
-        margin: 20px 0;
+    div#vk_groups {
+        margin: 0 auto;
     }
+    /*@include gradient-vertical($navbarInverseBackgroundHighlight, $navbarInverseBackground);*/
+
+    /*.container .message {*/
+        /*margin: 20px 0;*/
+    /*}*/
 }
 
 @media (max-width: 967px) {
