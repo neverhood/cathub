@@ -69,7 +69,6 @@ $(window).bind('page:load load', function(event) {
     $.api.header.init()
 
     var controllerPath = $.api[ $.camelCase($.api.controller).replace('/', '-') ];
-    console.log($.camelCase($.api.controller).replace('/', '-'));
     if ( typeof controllerPath === 'object' ) controllerPath.init();
 
     $.api.loading = false
