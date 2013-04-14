@@ -80,9 +80,14 @@ div#header, div#admin-header {
 }
 
 div#image-modal {
+    width:70%;
+    margin-left:-35%;
+    top: 5%;
+
     div.modal-body {
-        max-width: 600px;
-        max-height: 600px;
+        width: 750px;
+        margin: 0 auto;
+        max-height: 700px;
     }
 }
 
