@@ -22,10 +22,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   private
 
   def resource_params
-    params.require(:user).permit %i(email name password password_confirmation current_password)
+    params.require(:user).permit [:email, :name, :password, :password_confirmation, :current_password]
   end
 
   def passwordless_resource_params
-    params.require(:user).permit( %i(email name password password_confirmation) )
+    params.require(:user).permit( [:email, :name, :password, :password_confirmation] )
   end
 end
