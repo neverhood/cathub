@@ -39,7 +39,7 @@
 <% end %>
 
 
-<div id='posts'>
+<div id='posts' data-page='1' data-last-page='<%= @posts.last_page? %>'>
   <%= render @posts %>
 </div>
 

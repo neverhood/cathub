@@ -6,6 +6,13 @@ class PostsController < ApplicationController
   def index
     @posts = @section.page(params[:page]).includes(:user).includes(:media)
     @post  = Post.new.tap { |post| post.build_media }
+
+    respond_to do |format|
+      format.html
+      format.json do
+        render json: { entries: render_to_string(partial: 'post', collection: @posts), last: @posts.last_page? }
+      end
+    end
   end
 
   def create

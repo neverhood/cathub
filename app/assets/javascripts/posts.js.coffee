@@ -17,9 +17,22 @@ $.api.posts =
 
             formContainer.slideToggle 'fast'
 
+        container = -> $('div#posts')
+
         currentSection = ->
             matches = window.location.search.match(/section=(.*)/)
             if matches? then matches[1] else null
+
+        lastPage = ->
+            container().attr('data-last-page') == 'true'
+
+        currentPage = ->
+            parseInt( container().attr('data-page') )
+
+        nextPageUrl = ->
+            url = "/posts?page=#{currentPage() + 1}"
+            if currentSection()? then url += "&section=#{ currentSection() }"
+            url
 
         $('div#posts div.post img.gif-image, div#posts div.post img.gif-animation').click ->
             $(this).parent().find('img.gif-image, img.gif-animation, div.gif-info-overlay').toggleClass 'hidden'
@@ -62,3 +75,25 @@ $.api.posts =
         if $.cookie('show-new-post-form')? and $.cookie('show-new-post-form') == 'true'
             $.removeCookie 'show-new-post-form', path: '/'
             formContainer.slideDown 'fast'
+
+
+        $(document).bind('scroll.posts', ->
+            if $.api.loading or lastPage() or not nearBottomOfPage()
+                return false
+
+            $.api.loading = true
+
+            $.getJSON nextPageUrl(), (data) ->
+                $.api.loading = false
+
+                posts = container()
+                posts.append data.entries
+                posts.attr('data-page', currentPage() + 1)
+                posts.attr('data-last-page', data.last)
+
+                posts.find('div.post div.like-bar').show()
+                posts.find('div.post div.like-bar-js-required').hide()
+        ).bind('page:change', ->
+            $(this).unbind 'scroll.posts'
+        )
+

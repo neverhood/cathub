@@ -1,4 +1,6 @@
 class Post < ActiveRecord::Base
+  paginates_per 5
+
   belongs_to :user
   has_one :media, autosave: true, dependent: :destroy; accepts_nested_attributes_for :media
   has_many :likes

@@ -32,6 +32,18 @@
 
 $.ajaxSettings.dataType = 'json';
 
+function nearBottomOfPage() {
+    return scrollDistanceFromBottom() < 400;
+}
+
+function scrollDistanceFromBottom() {
+    return pageHeight() - (window.pageYOffset + window.innerHeight);
+}
+
+function pageHeight() {
+    return Math.max(document.body.scrollHeight, document.body.offsetHeight);
+}
+
 $(window).on('page:fetch', function(event) {
     $.api.loading = true;
 
