@@ -26,6 +26,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def passwordless_resource_params
-    params.require(:user).permit( [:email, :name, :password, :password_confirmation] )
+    params.require(:user).permit( [:email, :name, :password, :password_confirmation] ).tap do |attrs|
+      attrs[:set_own_password] = true if params[:user][:password].present? and params[:user][:password_confirmation].present?
+    end
   end
 end
