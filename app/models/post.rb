@@ -10,9 +10,9 @@ class Post < ActiveRecord::Base
   scope :popularity, -> { order('posts.likes_count DESC') }
 
   # TOPS
-  scope :daily,    -> (type) { send(type).where('posts.created_at >= ?', 1.day.ago).limit(5).popularity }
-  scope :weekly,   -> (type) { send(type).where('posts.created_at >= ?', 7.day.ago).limit(5).popularity }
-  scope :all_time, -> (type) { send(type).limit(5).popularity }
+  scope :daily,    -> type  { send(type).where('posts.created_at >= ?', 1.day.ago).limit(5).popularity }
+  scope :weekly,   -> type  { send(type).where('posts.created_at >= ?', 7.day.ago).limit(5).popularity }
+  scope :all_time, -> type  { send(type).limit(5).popularity }
 
   def liked!
     increment! :likes_count, 1

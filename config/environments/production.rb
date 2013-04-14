@@ -1,5 +1,15 @@
 Cathub::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
+   config.action_mailer.default_url_options = { host: 'localhost:3000' }
+
+   ActionMailer::Base.delivery_method = :smtp
+   ActionMailer::Base.smtp_settings = {
+    :address               => "localhost",
+    :port                 => 25,
+    :domain                => "cats.bebet.net",
+    :enable_starttls_auto  => true,
+    :openssl_verify_mode  => 'none'
+   }
 
   # Code is not reloaded between requests.
   config.cache_classes = true

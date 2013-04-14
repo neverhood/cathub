@@ -1,4 +1,6 @@
 ru:
+  title: 'Коты'
+
   application:
     header:
       root: 'Главная'
