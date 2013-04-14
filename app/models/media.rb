@@ -1,4 +1,5 @@
 require 'youtube'
+require 'validators/file_size_validator'
 
 class Media < ActiveRecord::Base
   include Youtube
@@ -12,6 +13,7 @@ class Media < ActiveRecord::Base
 
   validate  :valid_youtube_video, if: :video?
   validates :url, presence: true, if: :video?
+  validates :image, file_size: { maximum: 1.megabytes.to_i }, allow_nil: true
 
   private
 

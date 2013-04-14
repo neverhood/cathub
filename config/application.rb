@@ -21,6 +21,8 @@ module Cathub
 
     config.active_record.schema_format = :sql
 
+    #config.autoload_paths += %W( #{config.root}/lib )
+
     # PATCHES
     Dir["#{Rails.root}/lib/patches/**/**.rb"].each { |file| require file }
     Dir["#{Rails.root}/lib/**/**.rb"].each { |file| require file }

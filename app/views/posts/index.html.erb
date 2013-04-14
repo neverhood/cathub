@@ -52,8 +52,67 @@
 <% end %>
 
 
-<div id='posts' data-page='1' data-last-page='<%= @posts.last_page? %>'>
-  <%= render @posts %>
+<div class='row'>
+  <div id='posts' class='span6 pull-left' data-page='1' data-last-page='<%= @posts.last_page? %>'>
+    <%= render @posts %>
+  </div>
+
+  <div id='cat-tops' class='well span4 pull-right'>
+    <h3><%= t '.tops_header' %> <%= icon_label 'icon-star' %></h3>
+    <hr />
+
+    <div id='daily-tops'>
+      <h3><%= t '.daily' %></h4>
+      <h5> <%= t '.video' %> </h5>
+      <div class='cat-top-entries'>
+        <% @daily_top_videos.each do |post| %>
+          <%= link_to post_description(post), post %>
+        <% end %>
+      </div>
+      <h5> <%= t '.image' %> </h5>
+      <div class='cat-top-entries'>
+        <% @daily_top_images.each do |post| %>
+          <%= link_to post_description(post), post %>
+        <% end %>
+      </div>
+    </div>
+
+    <hr />
+
+    <div id='weekle-tops'>
+      <h3><%= t '.weekly' %></h4>
+      <h5> <%= t '.video' %> </h5>
+      <div class='cat-top-entries'>
+        <% @weekly_top_videos.each do |post| %>
+          <%= link_to post_description(post), post %>
+        <% end %>
+      </div>
+      <h5> <%= t '.image' %> </h5>
+      <div class='cat-top-entries'>
+        <% @weekly_top_images.each do |post| %>
+          <%= link_to post_description(post), post %>
+        <% end %>
+      </div>
+    </div>
+
+    <hr />
+
+    <div id='all-time-tops'>
+      <h3><%= t '.all_time' %></h4>
+      <h5> <%= t '.video' %> </h5>
+      <div class='cat-top-entries'>
+        <% @all_time_top_videos.each do |post| %>
+          <%= link_to post_description(post), post %>
+        <% end %>
+      </div>
+      <h5> <%= t '.image' %> </h5>
+      <div class='cat-top-entries'>
+        <% @all_time_top_images.each do |post| %>
+          <%= link_to post_description(post), post %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
 
 <%= render 'image_modal' %>

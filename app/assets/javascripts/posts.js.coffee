@@ -68,36 +68,39 @@ $.api.posts =
             $(this).parents('div.post').remove()
 
         $('a#new-post').bind 'click', (event) ->
-            if currentSection()?
-                $.cookie 'show-new-post-form', 'true', expires: 7, path: '/'
-            else
-                event.stopPropagation()
-                event.preventDefault()
+            if $.api.action == 'index'
+                if currentSection()?
+                    $.cookie 'show-new-post-form', 'true', expires: 7, path: '/'
+                else
+                    event.stopPropagation()
+                    event.preventDefault()
 
-                formContainer.slideDown 'fast'
+                    formContainer.slideDown 'fast'
+            else
+                $.cookie 'show-new-post-form', 'true', expires: 7, path: '/'
 
         if $.cookie('show-new-post-form')? and $.cookie('show-new-post-form') == 'true'
             $.removeCookie 'show-new-post-form', path: '/'
             formContainer.slideDown 'fast'
 
+        if $.api.action == 'index'
+            $(document).bind('scroll.posts', ->
+                if $.api.loading or lastPage() or not nearBottomOfPage()
+                    return false
 
-        $(document).bind('scroll.posts', ->
-            if $.api.loading or lastPage() or not nearBottomOfPage()
-                return false
+                $.api.loading = true
 
-            $.api.loading = true
+                $.getJSON nextPageUrl(), (data) ->
+                    $.api.loading = false
 
-            $.getJSON nextPageUrl(), (data) ->
-                $.api.loading = false
+                    posts = container()
+                    posts.append data.entries
+                    posts.attr('data-page', currentPage() + 1)
+                    posts.attr('data-last-page', data.last)
 
-                posts = container()
-                posts.append data.entries
-                posts.attr('data-page', currentPage() + 1)
-                posts.attr('data-last-page', data.last)
-
-                posts.find('div.post div.like-bar').show()
-                posts.find('div.post div.like-bar-js-required').hide()
-        ).bind('page:change', ->
-            $(this).unbind 'scroll.posts'
-        )
+                    posts.find('div.post div.like-bar').show()
+                    posts.find('div.post div.like-bar-js-required').hide()
+            ).bind('page:change', ->
+                $(this).unbind 'scroll.posts'
+            )
 

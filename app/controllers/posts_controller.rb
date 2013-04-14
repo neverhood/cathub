@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_filter :authenticate_user!, only: [ :update, :destroy, :create ]
-  before_filter :find_post!, only: [ :update, :destroy ]
+  before_filter :find_post!, only: [ :show, :update, :destroy ]
   before_filter :prepare_section, only: [ :index ]
   before_filter :prepare_sort, only: [ :index ]
 
@@ -8,12 +8,17 @@ class PostsController < ApplicationController
     @posts = @section.order(@sort).page(params[:page]).includes(:user).includes(:media)
     @post  = Post.new.tap { |post| post.build_media }
 
+    prepare_top_cats unless request.xhr?
+
     respond_to do |format|
       format.html
       format.json do
         render json: { entries: render_to_string(partial: 'post', collection: @posts), last: @posts.last_page? }
       end
     end
+  end
+
+  def show
   end
 
   def create
@@ -56,5 +61,14 @@ class PostsController < ApplicationController
 
   def prepare_sort
     @sort = %w(likes_count).include?(params[:sort]) ? "posts.#{params[:sort]} DESC, posts.created_at DESC" : 'posts.created_at DESC'
+  end
+
+  def prepare_top_cats
+    @daily_top_videos    = Post.daily(:video)
+    @daily_top_images    = Post.daily(:image)
+    @weekly_top_videos   = Post.daily(:video)
+    @weekly_top_images   = Post.daily(:image)
+    @all_time_top_videos = Post.all_time(:video)
+    @all_time_top_images = Post.all_time(:image)
   end
 end

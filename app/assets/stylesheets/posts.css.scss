@@ -11,6 +11,16 @@ body#posts {
         }
     }
 
+    div#cat-tops {
+        div.cat-top-entries a {
+            display: block;
+        }
+
+        span.top-entry-likes {
+            margin-left: 10px;
+        }
+    }
+
     div#new-post-form-container {
         margin: 20px 0;
         @extend .span8;

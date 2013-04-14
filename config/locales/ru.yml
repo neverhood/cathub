@@ -69,6 +69,12 @@ ru:
       sort_by: 'Сортировать котов по:'
       date_sort: 'Дате'
       likes_sort: 'Популярности'
+      tops_header: 'Лучшие коты'
+      daily: 'Сегодня'
+      weekly: 'Неделя'
+      all_time: 'Все время'
+      no_description: 'Без описания'
+      by: 'от %{name}'
     post:
       posted_by: 'Опубликовано пользователем:'
       gif: 'GIF'
