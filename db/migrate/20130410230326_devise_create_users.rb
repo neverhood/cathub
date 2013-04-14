@@ -34,6 +34,10 @@ class DeviseCreateUsers < ActiveRecord::Migration
       # t.string :authentication_token
 
       t.string :name, :null => false, :default => ""
+      t.string :provider
+      t.string :provider_url
+      t.boolean :set_own_password, default: true
+
       t.timestamps
     end
 

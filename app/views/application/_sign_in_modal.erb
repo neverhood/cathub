@@ -12,7 +12,10 @@
 
       <%= form.button :submit, t('auth.sign_in'), class: 'btn-success', data: { disable_with: t('common.please_wait') } %>
     <% end %>
-    <%= link_to t('auth.forgot_password?'), new_user_password_path %>
+
+    <div><%= link_to t('auth.forgot_password?'), new_user_password_path %></div>
+    <div><%= link_to t('auth.vk'), user_omniauth_authorize_path(:vkontakte) %></div>
+    <div><%= link_to t('auth.facebook'), user_omniauth_authorize_path(:facebook) %></div>
   </div>
 
   <div class='modal-footer'>

@@ -41,7 +41,11 @@ end
 gem 'russian'
 gem 'unicode_utils'
 
+# Authentication
 gem 'devise', git: 'git://github.com/plataformatec/devise.git', branch: 'rails4'
+gem 'omniauth'
+gem 'omniauth-vkontakte'
+gem 'omniauth-facebook'
 
 gem 'jquery-rails'
 

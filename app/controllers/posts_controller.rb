@@ -1,9 +1,10 @@
 class PostsController < ApplicationController
   before_filter :authenticate_user!, only: [ :update, :destroy, :create ]
   before_filter :find_post!, only: [ :update, :destroy ]
+  before_filter :prepare_section, only: [ :index ]
 
   def index
-    @posts = Post.page(params[:page]).includes(:user).includes(:media)
+    @posts = @section.page(params[:page]).includes(:user).includes(:media)
     @post  = Post.new.tap { |post| post.build_media }
   end
 
@@ -39,5 +40,9 @@ class PostsController < ApplicationController
 
   def find_post!
     @post = Post.find(params[:id])
+  end
+
+  def prepare_section
+    @section = %w(video image).include?(params[:section]) ? Post.send(params[:section].to_sym) : Post.scoped
   end
 end

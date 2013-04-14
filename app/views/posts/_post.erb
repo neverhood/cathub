@@ -8,7 +8,7 @@
   </div>
 
   <% if post.media.video? %>
-    <iframe width="560" height="315" src="<%= post.media.url %>" frameborder="0" allowfullscreen></iframe>
+    <iframe width="560" height="315" src="<%= post.media.url %>?html5=1" frameborder="0" allowfullscreen></iframe>
   <% else %>
     <%- if post.media.gif? %>
       <div class='gif-image-container'>

@@ -184,6 +184,9 @@ CREATE TABLE users (
     current_sign_in_ip character varying(255),
     last_sign_in_ip character varying(255),
     name character varying(255) DEFAULT ''::character varying NOT NULL,
+    provider character varying(255),
+    provider_url character varying(255),
+    set_own_password boolean DEFAULT true,
     created_at timestamp without time zone,
     updated_at timestamp without time zone
 );

@@ -1,4 +1,14 @@
-<%= page_header %>
+<div id='posts-header'>
+  <div id='posts-navigation'>
+    <ul class='nav nav-pills'>
+      <li class='<%= current_section.all?? "active" : "" %>'> <%= link_to t('.all'), posts_path %> </li>
+      <li class='<%= current_section.video?? "active" : "" %>'> <%= link_to t('.video'), posts_path(section: 'video') %> </li>
+      <li class='<%= current_section.image?? "active" : "" %>'> <%= link_to t('.image'), posts_path(section: 'image') %> </li>
+    </ul>
+  </div>
+</div>
+
+<hr />
 
 <%- if user_signed_in? or admin_signed_in? %>
   <%= link_to t('.new'), nil, id: 'new-post-form-toggler' %>

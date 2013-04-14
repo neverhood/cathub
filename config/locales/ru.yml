@@ -24,6 +24,9 @@ ru:
     sign_out: 'Выйти'
     invalid_auth_params: 'Введены неправельные данные'
     forgot_password?: 'Забыли пароль?'
+    omniauth_failure: 'Произошла ошибка, пожалуйста, попробуйте позже'
+    vk: 'Войти через Vkontakte'
+    facebook: 'Войти через Facebook'
 
   activerecord:
     models:
@@ -56,6 +59,9 @@ ru:
       header: 'Коты'
       new: 'Добавить пост'
       video_placeholder: 'http://www.youtube.com/watch?v=ZBAGEeOms-8'
+      image: 'Изображения'
+      video: 'Видео'
+      all: 'Всё'
     post:
       posted_by: 'Опубликовано пользователем:'
       gif: 'GIF'

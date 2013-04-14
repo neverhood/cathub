@@ -18,3 +18,9 @@ span.error, small.error {
     color: gray;
     font-style: italic;
 }
+
+.icon-vk:before {
+    content: "B";
+    font-family: sans-serif;
+    font-weight: bold; 
+}
