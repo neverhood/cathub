@@ -9,8 +9,9 @@ $.api.header =
             signInModal.modal 'show'
 
         $('a#close-sign-in-modal, button#close-sign-in-modal').bind 'click', (event) ->
-            event.preventDefault()
-            event.stopPropagation()
+            if this.tagName == 'A'
+                event.preventDefault()
+                event.stopPropagation()
 
             signInModal.modal 'hide'
 
