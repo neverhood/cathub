@@ -51,7 +51,7 @@ $.api.posts =
             imageModal.find('div#post-description').text $this.data('description')
             imageModal.modal 'show'
 
-        $('button#close-image-modal, a#close-image-modal').click (event), ->
+        $('button#close-image-modal, a#close-image-modal').bind 'click', (event) ->
             event.preventDefault()
             event.stopPropagation()
 
