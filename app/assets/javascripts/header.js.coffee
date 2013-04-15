@@ -8,7 +8,7 @@ $.api.header =
 
             signInModal.modal 'show'
 
-        $('a#close-sign-in-modal, button#cancel-sign-in-modal').bind 'click', (event) ->
+        $('a#close-sign-in-modal, a#cancel-sign-in-modal').bind 'click', (event) ->
             event.preventDefault()
             event.stopPropagation()
 
