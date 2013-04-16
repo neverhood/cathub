@@ -66,8 +66,8 @@ class PostsController < ApplicationController
   def prepare_top_cats
     @daily_top_videos    = Post.daily(:video)
     @daily_top_images    = Post.daily(:image)
-    @weekly_top_videos   = Post.daily(:video)
-    @weekly_top_images   = Post.daily(:image)
+    @weekly_top_videos   = Post.weekly(:video)
+    @weekly_top_images   = Post.weekly(:image)
     @all_time_top_videos = Post.all_time(:video)
     @all_time_top_images = Post.all_time(:image)
   end
