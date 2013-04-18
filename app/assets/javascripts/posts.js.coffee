@@ -17,7 +17,7 @@ $.api.posts =
 
             formContainer.slideToggle 'fast'
 
-        container = -> $('div#posts')
+        container = $('div#posts')
 
         currentSection = ->
             matches = window.location.search.match(/section=(.*)/)
@@ -27,10 +27,10 @@ $.api.posts =
             if matches? then matches[1] else null
 
         lastPage = ->
-            container().attr('data-last-page') == 'true'
+            container.attr('data-last-page') == 'true'
 
         currentPage = ->
-            parseInt( container().attr('data-page') )
+            parseInt( container.attr('data-page') )
 
         nextPageUrl = ->
             url = "/posts?page=#{currentPage() + 1}"
@@ -43,15 +43,15 @@ $.api.posts =
 
         $('div#posts div.post img.regular-image').click ->
             $this = $(this)
-            container = $this.parent()
-            largeImage = container.find('img.image-large-version').clone()
+            post  = $this.parent()
+            largeImage = post.find('img.image-large-version').clone()
 
             imageModal.find('div#image-container').html(largeImage.removeClass('hidden'))
             imageModal.find('div#author-name').text $this.data('author')
             imageModal.find('div#post-description').text $this.data('description')
             imageModal.modal 'show'
 
-        $('button#close-image-modal, a#close-image-modal').click (event), ->
+        $('button#close-image-modal, a#close-image-modal').bind 'click', (event) ->
             event.preventDefault()
             event.stopPropagation()
 
@@ -93,7 +93,7 @@ $.api.posts =
                 $.getJSON nextPageUrl(), (data) ->
                     $.api.loading = false
 
-                    posts = container()
+                    posts = container
                     posts.append data.entries
                     posts.attr('data-page', currentPage() + 1)
                     posts.attr('data-last-page', data.last)

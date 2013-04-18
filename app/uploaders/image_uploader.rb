@@ -48,7 +48,6 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 
   process resize_to_limit: [ 800, 600 ]
-  process :watermark
 
   version :large do
     process resize_to_limit: [ 800, 600 ]
