@@ -97,9 +97,6 @@ $.api.posts =
                     posts.append data.entries
                     posts.attr('data-page', currentPage() + 1)
                     posts.attr('data-last-page', data.last)
-
-                    posts.find('div.post div.like-bar').show()
-                    posts.find('div.post div.like-bar-js-required').hide()
             ).bind('page:change', ->
                 $(this).unbind 'scroll.posts'
             )

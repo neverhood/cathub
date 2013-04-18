@@ -4,7 +4,6 @@
 
 body#posts, body#users {
     div.like-bar {
-        display: none; /* will be shown with JS */
         a {
             @extend %undecorated;
         }

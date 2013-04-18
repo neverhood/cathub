@@ -5,9 +5,6 @@
 
 $.api.likes =
     init: ->
-        $('div#posts div.post div.like-bar').show()
-        $('div#posts div.post div.like-bar-js-required').hide()
-
         $('div#posts').on('ajax:beforeSend', 'a.like, a.unlike', ->
             $this = $(this)
             container = $(this).parent()
