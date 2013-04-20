@@ -54,7 +54,7 @@ body#posts {
             }
 
             i.active {
-                color: $linkColor;
+                color: $errorText;
             }
         }
     }
@@ -71,6 +71,7 @@ body#posts, body#users {
     div.post {
         max-width: 560px;
         padding: 10px 0;
+        margin: 10px 0;
 
         img.gif-image, img.gif-animation, img.regular-image {
             cursor: pointer;

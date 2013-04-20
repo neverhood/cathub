@@ -23,9 +23,9 @@
 
 <hr />
 
-<%- if user_signed_in? or admin_signed_in? %>
+<%- if user_signed_in? %>
   <%- if current_section.all? %>
-    <%= link_to t('.new'), nil, id: 'new-post-form-toggler' %>
+    <%= link_to t('.new'), nil, class: 'btn btn-danger', id: 'new-post-form-toggler' %>
   <% end %>
 
   <div id='new-post-form-container' class='well'>
@@ -46,9 +46,11 @@
 
       <%= form.button :submit, t('common.submit'), data: { disable_with: t('common.please_wait') } %>
     <% end %>
-
   </div>
-
+<% else %>
+  <%- if current_section.all? %>
+    <%= link_to t('.new'), new_user_session_path, class: 'btn btn-danger' %>
+  <% end %>
 <% end %>
 
 
