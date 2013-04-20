@@ -9,24 +9,28 @@
 
 <body id='<%= controller_path.dasherize.gsub('/', '-') %>' data-action='<%= action_name.dasherize %>'>
 
-<div id='wrapper'>
-  <%= render 'header'        %>
-  <%= render 'notifications' %>
+<div class='page-container'>
+  <div id='wrapper'>
+    <%= render 'header'        %>
+    <%= render 'notifications' %>
 
-  <div class='container' id='content'>
-    <%= yield %>
+    <div class='container' id='content'>
+      <%= yield %>
 
-    <div id='loader' class='hidden'> <%= image_tag 'loader.gif' %> </div>
-    <div id='backdrop' class='modal-backdrop hidden'> </div>
+      <div id='loader' class='hidden'> <%= image_tag 'loader.gif' %> </div>
+      <div id='backdrop' class='modal-backdrop hidden'> </div>
 
-    <div id='push'></div>
+      <div id='push'></div>
+    </div>
   </div>
+
+  <%- unless Rails.env.development? %>
+    <script type="text/javascript" src="//vk.com/js/api/openapi.js?88"></script>
+  <% end %>
+
+  <%= render 'sign_in_modal' unless user_signed_in? %>
+  <%= render 'footer' %>
 </div>
-
-<script type="text/javascript" src="//vk.com/js/api/openapi.js?88"></script>
-
-<%= render 'sign_in_modal' unless user_signed_in? %>
-<%= render 'footer' %>
 
 </body>
 

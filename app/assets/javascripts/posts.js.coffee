@@ -38,10 +38,10 @@ $.api.posts =
             if currentSort()? then url += "&sort=#{ currentSort() }"
             url
 
-        $('div#posts div.post img.gif-image, div#posts div.post img.gif-animation').click ->
+        $('div#posts').on 'click', 'div.post img.gif-image, div.post img.gif-animation', ->
             $(this).parent().find('img.gif-image, img.gif-animation, div.gif-info-overlay').toggleClass 'hidden'
 
-        $('div#posts div.post img.regular-image').click ->
+        $('div#posts').on 'click', 'div.post img.regular-image', ->
             $this = $(this)
             post  = $this.parent()
             largeImage = post.find('img.image-large-version').clone()

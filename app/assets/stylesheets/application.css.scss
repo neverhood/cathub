@@ -46,6 +46,7 @@
 @import 'bootstrap/pager';
 // Components: Popovers
 @import 'bootstrap/modals';
+@import 'bootstrap-modal';
 @import 'bootstrap/tooltip';
 @import 'bootstrap/popovers';
 // Components: Misc
@@ -81,15 +82,26 @@ div#header, div#admin-header {
 }
 
 div#image-modal {
-    width:70%;
-    margin-left:-35%;
-    top: 5%;
+    button#close-image-modal {
+        color: $red;
+        font-weight: bold;
+        opacity: 0.5;
+
+        &:hover {
+            opacity: 1;
+        }
+    }
 
     div.modal-body {
         text-align: center;
-        width: 750px;
-        margin: 0 auto;
-        max-height: 700px;
+    }
+}
+
+div#vk-auth-container, div#fb-auth-container {
+    margin: 2px 0;
+
+    a {
+        width: 180px;
     }
 }
 

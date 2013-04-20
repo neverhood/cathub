@@ -18,6 +18,8 @@
 //
 //= require bootstrap-alert
 //= require bootstrap-modal
+//= require bootstrap-modal-extended
+//= require bootstrap-modalmanager
 //= require bootstrap-transition
 //
 //= require cookie

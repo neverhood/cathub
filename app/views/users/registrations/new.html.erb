@@ -9,12 +9,12 @@
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, t('auth.sign_up'), data: { disable_with: t('auth.sign_up') } %>
+    <%= f.button :submit, t('auth.sign_up'), class: 'btn-success', data: { disable_with: t('auth.sign_up') } %>
   </div>
 <% end %>
 
-<div><%= link_to t('auth.vk'), user_omniauth_authorize_path(:vkontakte) %></div>
-<div><%= link_to t('auth.facebook'), user_omniauth_authorize_path(:facebook) %></div>
+<div id='vk-auth-container'><%= link_to t('auth.vk'), user_omniauth_authorize_path(:vkontakte), class: 'btn btn-info' %></div>
+<div id='fb-auth-container'><%= link_to t('auth.facebook'), user_omniauth_authorize_path(:facebook), class: 'btn btn-info' %></div>
 
 <hr />
 
