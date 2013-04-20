@@ -24,7 +24,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.create(post_params)
 
-    if @post.save
+    if @post.persisted?
       redirect_to root_path, notice: I18n.t('flash.posts.create.notice')
     else
       redirect_to root_path, alert: I18n.t('flash.posts.create.alert')

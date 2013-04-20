@@ -4,6 +4,8 @@ require 'validators/file_size_validator'
 class Media < ActiveRecord::Base
   include Youtube
 
+  attr_accessor :processing_required # carrierwave processing required
+
   belongs_to :post
 
   before_validation :strip_media_attributes!

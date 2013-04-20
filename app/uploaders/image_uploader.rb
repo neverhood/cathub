@@ -47,14 +47,12 @@ class ImageUploader < CarrierWave::Uploader::Base
     end
   end
 
-  process resize_to_limit: [ 800, 600 ]
 
-  version :large do
+  process :set_content_type
+  #process resize_to_limit: [ 800, 600 ], unless: :processing_required?
+
+  version :large, unless: :processing_required? do
     process resize_to_limit: [ 800, 600 ]
-  end
-
-  version :medium do
-    process resize_to_fit: [ 200, 270 ]
   end
 
   version :thumb do
@@ -62,6 +60,8 @@ class ImageUploader < CarrierWave::Uploader::Base
     process resize_to_limit: [ 200, 200 ]
     process convert: 'png'
   end
+
+  after :store, :unlink_original
 
   # Process files as they are uploaded:
   # process :scale => [200, 300]
@@ -88,11 +88,25 @@ class ImageUploader < CarrierWave::Uploader::Base
   # end
   #
 
+  def processing_required?
+    return model.processing_required unless model.processing_required.nil?
+
+    model.processing_required = begin
+                                  image_format = `identify -format "%m" #{self.path}`.split.first
+
+                                  not (image_format.present? and image_format =~ /gif/i)
+                                end
+  end
+
   private
 
   def secure_token
     var = :"@#{mounted_as}_secure_token"
     model.instance_variable_get(var) or model.instance_variable_set(var, SecureRandom.uuid)
+  end
+
+  def unlink_original file
+    File.delete self.file.file if version_name.blank?
   end
 
 end
