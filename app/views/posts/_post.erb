@@ -1,3 +1,5 @@
+<% cache post do %>
+
 <div id='post-<%= post.id %>' class='post'>
   <%- if (user_signed_in? and current_user.owns?(post)) or admin_signed_in? %>
     <%= link_to t('common.x'), post, method: 'delete', remote: true, class: 'close destroy-post', data: { confirm: t('common.are_you_sure?') } %>
@@ -46,3 +48,5 @@
 </div>
 
 <hr />
+
+<% end %>

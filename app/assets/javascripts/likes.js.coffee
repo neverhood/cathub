@@ -14,6 +14,11 @@ $.api.likes =
             container.find('a.like, a.unlike').toggleClass 'hidden'
 
             newLikesCount = if $this.hasClass('like') then currentLikesCount + 1 else currentLikesCount - 1
-            currentLikesDom.text newLikesCount
+
+            currentLikesDom.slideUp(300, ->
+                currentLikesDom.text newLikesCount
+                currentLikesDom.slideDown 300
+            )
+
+            #currentLikesDom.text newLikesCount
         )
-        #$('div#posts a.like, div#posts a.unlike').bind 'ajax:beforeSend', ->

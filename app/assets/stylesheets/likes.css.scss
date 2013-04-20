@@ -10,11 +10,15 @@ body#posts, body#users {
 
         i {
             cursor: pointer;
-            color: $linkColor;
+            color: $red;
         }
 
         span.current-likes-count {
+            display: inline-block;
+            text-align: center;
             color: $linkColor;
+            font-weight: bold;
+            min-width: 20px;
         }
     }
 }

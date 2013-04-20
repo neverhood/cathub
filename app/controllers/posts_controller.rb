@@ -56,7 +56,7 @@ class PostsController < ApplicationController
   end
 
   def prepare_section
-    @section = %w(video image).include?(params[:section]) ? Post.send(params[:section].to_sym) : Post.scoped
+    @section = %w(video image).include?(params[:section]) ? Post.send(params[:section].to_sym) : Post.all
   end
 
   def prepare_sort

@@ -6,6 +6,7 @@ class LikesController < ApplicationController
       format.html
       format.json do
         current_user.like!(@post) unless current_user.liked?(@post)
+        expire_fragment 'tops'
 
         render nothing: true, status: 202
       end
@@ -17,6 +18,7 @@ class LikesController < ApplicationController
       format.html
       format.json do
         current_user.unlike!(@post) if current_user.liked?(@post)
+        expire_fragment 'tops'
 
         render nothing: true, status: 202
       end
